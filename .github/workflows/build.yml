@@ -18,8 +18,7 @@ jobs:
 
       - name: Inject custom data
         run: |
-          mkdir -p domain-list-community/data
-          cp -r data domain-list-community/
+          cp data/mywhitelist domain-list-community/data/mywhitelist
 
       - name: Setup Go
         uses: actions/setup-go@v5
