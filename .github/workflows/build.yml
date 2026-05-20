@@ -41,7 +41,7 @@ jobs:
       # 6. Копируем результат обратно
       - name: Copy result
         run: |
-          cp domain-list-community/geosite.dat ./geosite.dat
+          cp domain-list-community/dlc.dat ./geosite.dat
 
       # 7. Загружаем artifact
       - name: Upload artifact
