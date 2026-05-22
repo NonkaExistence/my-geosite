@@ -14,7 +14,6 @@ avito.st
 avtodor-tr.ru
 beeline.ru
 burgerkingrus.ru
-cdn-settings.appsflyersdk.com
 chat2desk.com
 citydrive.ru
 config.me
