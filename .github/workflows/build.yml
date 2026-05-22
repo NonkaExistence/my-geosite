@@ -21,7 +21,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 2. Setup Go (без cache → убираем warning про go.sum)
+      # 2. Setup Go
       - name: Setup Go
         uses: actions/setup-go@v5
         with:
@@ -33,9 +33,10 @@ jobs:
         run: |
           git clone https://github.com/v2fly/domain-list-community.git
 
-      # 4. Inject custom data
+      # 4. Prepare data directory (ВАЖНО)
       - name: Inject custom data
         run: |
+          mkdir -p domain-list-community/data
           cp data/mywhitelist domain-list-community/data/mywhitelist
 
       # 5. Build geosite.dat
@@ -50,12 +51,18 @@ jobs:
         run: |
           cp domain-list-community/dlc.dat ./geosite.dat
 
-      # 7. Commit result
-      - name: Commit geosite.dat
+      # 7. Generate TXT version (без domain:)
+      - name: Generate TXT version
+        run: |
+          mkdir -p output
+          sed 's/domain://g' data/mywhitelist > output/mywhitelist.txt
+
+      # 8. Commit results
+      - name: Commit results
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
 
-          git add geosite.dat
-          git commit -m "update geosite.dat" || exit 0
+          git add geosite.dat output/mywhitelist.txt
+          git commit -m "update geosite + txt" || exit 0
           git push
