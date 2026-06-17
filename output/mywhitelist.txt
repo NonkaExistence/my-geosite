@@ -79,6 +79,8 @@ taxitax.org
 tbank.ru
 t-bank-app.ru
 t-bank-app.su
+cdn-tinkoff.ru
+tinkoff.ru
 trace-flow.ru
 trbcdn.net
 tu-tu.ru
